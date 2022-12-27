@@ -205,6 +205,8 @@ if __name__ == "__main__":
         if len(player_name) == 0 or player_name.isspace():
             print("This is not a valid name!")
             continue
+        else:
+            break
     time.sleep(1)
     print('\nHello {}. Wish you the best of luck! \n'.format(player_name))
     time.sleep(1)
