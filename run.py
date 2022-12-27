@@ -59,9 +59,9 @@ class Hangman:
                 continue
             if letter_or_word in self.word:
                 self.correct_letters.append(letter_or_word)
-                if all([c in self.correct_letters for c in self.word]):
+                if all(c in self.correct_letters for c in self.word):
                     self.display_game_state()
-                    print("You won! The random word is:", self.word)
+                    print("You won in", self.wrong_guesses, "guesses! The random word is:", self.word)
                     break
             else:
                 self.incorrect_letters.append(letter_or_word)
