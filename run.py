@@ -40,6 +40,39 @@ class Hangman:
 # game = Hangman(6)
 # print(game.word)
 
+    def play(self):
+        """
+        Function which checks correct, incorrect or duplicate guesses.
+        Displays state based on wrong guesses and dicrements attempts.
+        """
+        while True:
+            self.display_game_state()
+            letter_or_word = input("Enter a letter or the whole word: \n")            
+            if letter_or_word == self.word:
+                self.correct_letters = list(self.word)
+                self.display_game_state()
+                print("You won in", self.wrong_guesses, "guesses! The word was:", self.word)
+                break
+            elif not letter_or_word.isalpha() or len(letter_or_word) != 1:
+                print("Error: Please enter a single letter.")
+                continue
+            if letter_or_word in self.correct_letters + self.incorrect_letters:
+                print("Error: Already guessed letter. Please try different letter.")
+                continue
+            if letter_or_word in self.word:
+                self.correct_letters.append(letter_or_word)
+                if all([c in self.correct_letters for c in self.word]):
+                    self.display_game_state()
+                    print("You won! The random word is:", self.word)
+                    break
+            else:
+                self.incorrect_letters.append(letter_or_word)
+                self.wrong_guesses += 1
+                if self.wrong_guesses >= self.max_wrong_guesses:
+                    self.display_game_state()
+                    print("You lost :( The word was:", self.word)
+                    break
+
     def display_game_state(self):
         """
         Game's visually displayed stages.
