@@ -1,9 +1,9 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-
 import gspread
 from google.oauth2.service_account import Credentials
+import random
+import time
+
+words = ['mouse', 'house', 'love', 'mississippi', 'europe', 'asia', 'hangman', 'game', 'animal', 'flower', 'river', 'yoghurt', 'seed', 'random', 'lipstick', 'surname', 'playground', 'python', 'software', 'object', 'programming', 'seaside', 'city', 'continent', 'life', 'positive', 'school', 'return', 'spanish', 'loyal', 'rude', 'mother', 'siblings', 'ocean', 'atlantis', 'americano', 'aircraft', 'holidays', 'vacation', 'institute', 'care', 'health', 'human', 'booking']
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -17,6 +17,19 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_game')
 
 result = SHEET.worksheet('result')
-
 data = result.get_all_values()
-print(data)
+# print(data)
+
+class Hangman:
+
+    def __init__(self, max_wrong_guesses):
+        self.max_wrong_guesses = max_wrong_guesses
+
+        self.word = random.choice(words)
+
+        self.correct_letters = []
+        self.incorrect_letters = []
+        self.wrong_guesses = 0
+
+game = Hangman(6)
+print(game.word)
