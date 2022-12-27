@@ -21,7 +21,7 @@ SHEET = GSPREAD_CLIENT.open('hangman_game')
 
 result = SHEET.worksheet('result')
 data = result.get_all_values()
-# print(data)
+
 
 class Hangman:
     """
@@ -33,15 +33,10 @@ class Hangman:
         Set random word for game.
         """
         self.max_wrong_guesses = max_wrong_guesses
-
         self.word = random.choice(words)
-
         self.correct_letters = []
         self.incorrect_letters = []
         self.wrong_guesses = 0
-
-# game = Hangman(6)
-# print(game.word)
 
     def play(self):
         """
@@ -50,7 +45,7 @@ class Hangman:
         """
         while True:
             self.display_game_state()
-            letter_or_word = input("Enter a letter or the whole word: \n")            
+            letter_or_word = input("Enter a letter or the whole word: \n")
             if letter_or_word == self.word:
                 self.correct_letters = list(self.word)
                 self.display_game_state()
@@ -81,7 +76,6 @@ class Hangman:
         Game's visually displayed stages.
         """
         hangman_stages = [
-
             """
             +-------
             |/
@@ -204,7 +198,6 @@ if __name__ == "__main__":
          / \   |
              =====\n'''
           )
-
     time.sleep(1)
     while True:
         player_name = input('Enter your name: ')
@@ -212,17 +205,15 @@ if __name__ == "__main__":
         if len(player_name) == 0 or player_name.isspace():
             print("This is not a valid name!")
             continue
-        else:
-            break
-    time.sleep(1)  
+    time.sleep(1)
     print('\nHello {}. Wish you the best of luck! \n'.format(player_name))
     time.sleep(1)
     print('HANGED or SAVED? Let\'s test your guessing skills =D \n')
     time.sleep(1)
-    play_again = True
-    while play_again:
+    PLAY_AGAIN = True
+    while PLAY_AGAIN:
         game = Hangman(10)
         game.play()
         restart = input('You want to play again ? Y/N   ((EXIT game press ANY key)) \n >>> ')
-        play_again = restart in ['Yes', 'yes', 'Y', 'y']
+        PLAY_AGAIN = restart in ['Yes', 'yes', 'Y', 'y']
     print('Thank you for playing =D \n')
