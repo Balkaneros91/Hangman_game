@@ -21,8 +21,14 @@ data = result.get_all_values()
 # print(data)
 
 class Hangman:
-
+    """
+    Hangman class
+    """
     def __init__(self, max_wrong_guesses):
+        """
+        Method initializing Hangman object with attr and sets more attr's
+        Set random word for game.
+        """
         self.max_wrong_guesses = max_wrong_guesses
 
         self.word = random.choice(words)
@@ -31,5 +37,117 @@ class Hangman:
         self.incorrect_letters = []
         self.wrong_guesses = 0
 
-game = Hangman(6)
-print(game.word)
+# game = Hangman(6)
+# print(game.word)
+
+    def display_game_state(self):
+        """
+        Game's visually displayed stages.
+        """
+        hangman_stages = [
+
+            """
+            +-------
+            |/    
+            |
+            |
+            |
+            |
+          =====
+            """,
+            """
+            +-------+
+            |/      
+            |
+            |
+            |
+            |
+          =====
+            """,
+            """
+            +-------+
+            |/      |
+            |
+            |
+            |
+            |
+          =====
+            """,
+            """
+            +-------+
+            |/      |
+            |       Ö
+            |
+            |
+            |
+          =====
+            """,
+            """
+            +-------+
+            |/      |
+            |       Ö
+            |       I
+            |
+            |
+          =====
+            """,
+            """
+            +-------+
+            |/      |
+            |       Ö
+            |      /I
+            |
+            |
+          =====
+            """,
+            """
+            +-------+
+            |/      |
+            |       Ö
+            |      /I\\
+            |
+            |
+          =====
+            """,
+            """
+            +-------+
+            |/      |
+            |       Ö
+            |      /I\\
+            |       o
+            |
+          =====
+            """,
+            """
+            +-------+
+            |/      |
+            |       Ö
+            |      /I\\
+            |       o
+            |      / 
+          =====
+            """,
+            """
+            +-------+
+            |/      |
+            |       Ö
+            |      /I\\
+            |       o
+            |      / \\
+          =====
+            """,
+            """
+            +-------+
+            |/      |
+            |       X
+            |      /I\\
+            |       o
+            |      / \\
+          =====
+            """            
+        ]
+
+        print(hangman_stages[self.wrong_guesses])
+        print("Word: " + " ".join([c if c in self.correct_letters else "_" for c in self.word]))
+        print("Incorrectly guessed words:\n", self.incorrect_letters)
+        print("Wrong guesses:", self.wrong_guesses, "/10")
