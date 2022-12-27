@@ -216,6 +216,18 @@ if __name__ == "__main__":
     while PLAY_AGAIN:
         game = Hangman(10)
         game.play()
-        restart = input('You want to play again ? Y/N   ((EXIT game press ANY key)) \n >>> ')
-        PLAY_AGAIN = restart in ['Yes', 'yes', 'Y', 'y']
-    print('Thank you for playing =D \n')
+        VALID_INPUT = False
+        while not VALID_INPUT:
+            restart = input('You want to play again ? (Y/N) \n >>> ')
+            if restart in ['Yes', 'yes', 'Y', 'y']:
+                PLAY_AGAIN = True
+                VALID_INPUT = True
+                print("Starting again... =D")
+            elif restart in ['No', 'no', 'N', 'n']:
+                PLAY_AGAIN = False
+                VALID_INPUT = True
+            else:
+                print("Invalid input. Please enter (Y/N).")
+                continue
+
+            print('Thank you for playing. See You next time!')
