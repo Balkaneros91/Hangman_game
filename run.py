@@ -200,7 +200,7 @@ if __name__ == "__main__":
           )
     time.sleep(1)
     while True:
-        player_name = input('Enter your name: ')
+        player_name = input('Enter your name: \n')
         player_name = player_name.strip()
         if len(player_name) == 0 or player_name.isspace():
             print("This is not a valid name!")
