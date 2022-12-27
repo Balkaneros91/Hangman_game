@@ -1,7 +1,10 @@
-import gspread
-from google.oauth2.service_account import Credentials
+"""
+Imports
+"""
 import random
 import time
+import gspread
+from google.oauth2.service_account import Credentials
 
 words = ['mouse', 'house', 'love', 'mississippi', 'europe', 'asia', 'hangman', 'game', 'animal', 'flower', 'river', 'yoghurt', 'seed', 'random', 'lipstick', 'surname', 'playground', 'python', 'software', 'object', 'programming', 'seaside', 'city', 'continent', 'life', 'positive', 'school', 'return', 'spanish', 'loyal', 'rude', 'mother', 'siblings', 'ocean', 'atlantis', 'americano', 'aircraft', 'holidays', 'vacation', 'institute', 'care', 'health', 'human', 'booking']
 
@@ -53,7 +56,7 @@ class Hangman:
                 self.display_game_state()
                 print("You won in", self.wrong_guesses, "guesses! The word was:", self.word)
                 break
-            elif not letter_or_word.isalpha() or len(letter_or_word) != 1:
+            if not letter_or_word.isalpha() or len(letter_or_word) != 1:
                 print("Error: Please enter a single letter.")
                 continue
             if letter_or_word in self.correct_letters + self.incorrect_letters:
@@ -81,7 +84,7 @@ class Hangman:
 
             """
             +-------
-            |/    
+            |/
             |
             |
             |
@@ -90,7 +93,7 @@ class Hangman:
             """,
             """
             +-------+
-            |/      
+            |/
             |
             |
             |
@@ -157,7 +160,7 @@ class Hangman:
             |       Ö
             |      /I\\
             |       o
-            |      / 
+            |      /
           =====
             """,
             """
@@ -177,10 +180,49 @@ class Hangman:
             |       o
             |      / \\
           =====
-            """            
+            """      
         ]
 
         print(hangman_stages[self.wrong_guesses])
         print("Word: " + " ".join([c if c in self.correct_letters else "_" for c in self.word]))
         print("Incorrectly guessed words:\n", self.incorrect_letters)
         print("Wrong guesses:", self.wrong_guesses, "/10")
+
+
+if __name__ == "__main__":
+    time.sleep(1)
+    print("\nWelcome to Hangman World!")
+    print("========================")
+    time.sleep(1)
+    print('''
+
+          +----+
+          |   \|
+          Ö    |
+         /|\   |
+          |    |
+         / \   |
+             =====\n'''
+          )
+
+    time.sleep(1)
+    while True:
+        player_name = input('Enter your name: ')
+        player_name = player_name.strip()
+        if len(player_name) == 0 or player_name.isspace():
+            print("This is not a valid name!")
+            continue
+        else:
+            break
+    time.sleep(1)  
+    print('\nHello {}. Wish you the best of luck! \n'.format(player_name))
+    time.sleep(1)
+    print('HANGED or SAVED? Let\'s test your guessing skills =D \n')
+    time.sleep(1)
+    play_again = True
+    while play_again:
+        game = Hangman(10)
+        game.play()
+        restart = input('You want to play again ? Y/N   ((EXIT game press ANY key)) \n >>> ')
+        play_again = restart in ['Yes', 'yes', 'Y', 'y']
+    print('Thank you for playing =D \n')
