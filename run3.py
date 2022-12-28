@@ -101,7 +101,8 @@ class Hangman:
                 time.sleep(2)
                 continue
             if letter_or_word in self.correct_letters + self.incorrect_letters:
-                print("Error: Already guessed letter. Please try different letter.")
+                print("Error: Already guessed letter.")
+                print("Please try different letter.")
                 time.sleep(2)
                 continue
             if letter_or_word in self.word:
@@ -118,12 +119,16 @@ class Hangman:
                     break
             else:
                 self.incorrect_letters.append(letter_or_word)
+                # if letter_or_word != self.word:
                 self.wrong_guesses += 1
                 if self.wrong_guesses >= self.max_wrong_guesses:
                     self.display_game_state()
                     print("You lost :( The word was:", self.word)
                     time.sleep(2)
                     break
+            if letter_or_word != self.word:
+                self.max_wrong_guesses += 1
+
         if game.wrong_guesses >= game.max_wrong_guesses:
             final_state = "lost"
         else:
@@ -132,7 +137,7 @@ class Hangman:
         result.append_row(
             [
                 time.strftime("%Y-%m-%d"),
-                player_name,
+                username,
                 game.word,
                 game.wrong_guesses,
                 final_state,
@@ -246,10 +251,8 @@ class Hangman:
         ]
         os.system("cls" if os.name == "nt" else "clear")
         print(hangman_stages[self.wrong_guesses])
-        print(
-            "Word: "
-            + " ".join([c if c in self.correct_letters else "_" for c in self.word])
-        )
+        print("Word: " + " ".join([c if c in self.correct_letters
+              else "_" for c in self.word]))
         print("Incorrectly guessed words:\n", self.incorrect_letters)
         print("Wrong guesses:", self.wrong_guesses, "/10")
 
@@ -260,10 +263,10 @@ if __name__ == "__main__":
     GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
     SHEET = GSPREAD_CLIENT.open("hangman_game")
     result = SHEET.worksheet("result")
-    data = result.get_all_values()
+    data = result.get_all_values()[1:]
     print("\nPrevious Game Results:")
     print("Date\t\tPlayer\tWord\tWrong Guesses\t\tResult")
-    last_five_rows = data[-5:] if len(data) >= 5 else data[1:]
+    last_five_rows = data[-5:] if len(data) >= 5 else data
     for row in last_five_rows:
         print(f"{row[0]}\t{row[1]}\t{row[2]}\t\t{row[3]}\t\t{row[4]}")
 
@@ -272,7 +275,7 @@ if __name__ == "__main__":
     print("========================")
     time.sleep(1)
     print(
-        """
+        r"""
           +----+
           |   \|
           Ö    |
@@ -282,16 +285,16 @@ if __name__ == "__main__":
              =====\n"""
     )
     while True:
-        player_name = input("Enter your name: \n")
-        player_name = player_name.strip()
-        player_name = player_name.upper()
-        if len(player_name) == 0 or player_name.isspace():
+        username = input("Enter your username: \n")
+        username = username.strip()
+        username = username.upper()
+        if len(username) == 0 or username.isspace():
             print("This is not a valid name!")
             continue
         else:
             break
     time.sleep(1)
-    print("\nHello {}. Wish you the best of luck! \n".format(player_name))
+    print("\nHello {}. Wish you the best of luck! \n".format(username))
     time.sleep(1)
     print("HANGED or SAVED? Let's test your guessing skills =D \n")
     time.sleep(1)

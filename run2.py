@@ -101,7 +101,8 @@ class Hangman:
                 time.sleep(2)
                 continue
             if letter_or_word in self.correct_letters + self.incorrect_letters:
-                print("Error: Already guessed letter. Please try different letter.")
+                print("Error: Already guessed letter.")
+                print("Please try different letter.")
                 time.sleep(2)
                 continue
             if letter_or_word in self.word:
@@ -246,10 +247,8 @@ class Hangman:
         ]
         os.system("cls" if os.name == "nt" else "clear")
         print(hangman_stages[self.wrong_guesses])
-        print(
-            "Word: "
-            + " ".join([c if c in self.correct_letters else "_" for c in self.word])
-        )
+        print("Word: " + " ".join([c if c in self.correct_letters
+              else "_" for c in self.word]))
         print("Incorrectly guessed words:\n", self.incorrect_letters)
         print("Wrong guesses:", self.wrong_guesses, "/10")
 
@@ -260,10 +259,10 @@ if __name__ == "__main__":
     GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
     SHEET = GSPREAD_CLIENT.open("hangman_game")
     result = SHEET.worksheet("result")
-    data = result.get_all_values()
+    data = result.get_all_values()[1:]
     print("\nPrevious Game Results:")
     print("Date\t\tPlayer\tWord\tWrong Guesses\t\tResult")
-    last_five_rows = data[-5:] if len(data) >= 5 else data[1:]
+    last_five_rows = data[-5:] if len(data) >= 5 else data
     for row in last_five_rows:
         print(f"{row[0]}\t{row[1]}\t{row[2]}\t\t{row[3]}\t\t{row[4]}")
 
