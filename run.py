@@ -21,6 +21,11 @@ SHEET = GSPREAD_CLIENT.open('hangman_game')
 
 result = SHEET.worksheet('result')
 data = result.get_all_values()
+print("\nPrevious Game Results:")
+print("Date\t\tPlayer\tWord\tWrong Guesses\t\tResult")
+last_five_rows = data[-5:] if len(data) >= 5 else data[:]
+for row in last_five_rows:
+    print(f"{row[0]}\t{row[1]}\t{row[2]}\t\t{row[3]}\t\t{row[4]}")
 
 
 class Hangman:
@@ -70,6 +75,12 @@ class Hangman:
                     self.display_game_state()
                     print("You lost :( The word was:", self.word)
                     break
+        if game.wrong_guesses >= game.max_wrong_guesses:
+            final_state = "lost"
+        else:
+            final_state = "won"
+
+        result.append_row([time.strftime("%Y-%m-%d"), player_name, game.word, game.wrong_guesses, final_state])
 
     def display_game_state(self):
         """
@@ -189,7 +200,6 @@ if __name__ == "__main__":
     print("========================")
     time.sleep(1)
     print('''
-
           +----+
           |   \|
           Ö    |
@@ -198,7 +208,6 @@ if __name__ == "__main__":
          / \   |
              =====\n'''
           )
-    time.sleep(1)
     while True:
         player_name = input('Enter your name: \n')
         player_name = player_name.strip()
