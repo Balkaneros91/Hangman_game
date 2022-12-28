@@ -27,24 +27,24 @@ You can view the live deployed game here: [Hangman_Game](https://hangman-saveman
 
 # Objective
 
-The aim of my project is to deliver a fun, intuitive, fully interactive, user friendly command line game. 
+With this project I want to deliver a fully interactive, user friendly fun command line game. 
 
 [Back to content list](<#contents>)
 
 # User Experience (UX)
 
-## Visitors Goals
+### __User Stories__
+- The Player wants to be able to input their name and receive a feedback if the data is invalid.
+- The Player wants to know the number of attempts in total and attempts left.
+- The Player wants to know the already guessed letters and get notified if the letter has been already guessed.
 
-* A nice home page welcomes the player and invite to immediately engage with the game.
-* The game offers the opportunity to the user, to put in practice their language and grammar skills.
-* The game is intuitive and user friendly, steps and menus are well detailed along the game, making a very rewarding user experience.
-* The game offers the user the option to go back to the main menu, check the rules of the game, select a new language, or to end it.
+- As a user, I want to see if I've made the leaderboard after exiting the game after playing.
 
 [Back to content list](<#contents>)
 
 # Hangman Flow Chart
 
-A flow chart was created with the main purpose to map the steps to follow throughout the implementation process of this game. I signed up for a free account with [Lucid Chart](https://www.lucidchart.com/pages/) to be able to produce the below chart.
+A flow-chart was used for mapping-out the necessary steps throughout  created with the main purpose to map the steps to follow throughout the implementation process of this game. I signed up for a free account with [Lucid Chart](https://www.lucidchart.com/pages/) to be able to produce the below chart.
 
 
 ![Hangman Flow Chart](images/pp3_flowchart.png)
