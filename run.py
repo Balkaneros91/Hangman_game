@@ -3,6 +3,7 @@ Imports
 """
 import random
 import time
+import os
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -51,6 +52,7 @@ class Hangman:
         while True:
             self.display_game_state()
             letter_or_word = input("Enter a letter or the whole word: \n")
+            letter_or_word = letter_or_word.lower()
             if letter_or_word == self.word:
                 self.correct_letters = list(self.word)
                 self.display_game_state()
@@ -187,7 +189,7 @@ class Hangman:
           =====
             """      
         ]
-
+        os.system("cls" if os.name == "nt" else "clear")
         print(hangman_stages[self.wrong_guesses])
         print("Word: " + " ".join([c if c in self.correct_letters else "_" for c in self.word]))
         print("Incorrectly guessed words:\n", self.incorrect_letters)
@@ -211,6 +213,7 @@ if __name__ == "__main__":
     while True:
         player_name = input('Enter your name: \n')
         player_name = player_name.strip()
+        player_name = player_name.upper()
         if len(player_name) == 0 or player_name.isspace():
             print("This is not a valid name!")
             continue
