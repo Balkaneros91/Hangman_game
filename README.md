@@ -50,7 +50,6 @@ With this project I want to deliver a fully interactive, user friendly fun comma
 
 A flow-chart was used for mapping-out the necessary steps throughout the implementation process of this game. A free sign up with [Lucid Chart](https://www.lucidchart.com/pages/) helped in creation of this map.
 
-
 ![Hangman Flow Chart](images/pp3_flowchart.png)
 
 [Back to content list](<#contents>)
@@ -127,33 +126,11 @@ My game displays the following features:
 
 ## CI Python Linter Validation
 
-[CI Python Linter](https://pep8ci.herokuapp.com/) online validation was used to check that the code is up to standard. All pages cleared the PEP8 validation with no errors.
+[CI Python Linter](https://pep8ci.herokuapp.com/) online validation used to check if the code is meeting the standard. All checked in Linter, no remaining errors.
 
 ## run.py
 
 ![run.py Linter test result](images/ci_python_linter.png)
-
-[Back to content list](<#contents>)
-
-# Bugs Fixed
-
-- While testing the game I discovered I have an error with a function I created to clear the terminal, 
-
-![os system error](images/os_system_error.png)
-
-- I fixed this error by adding the correct external import statement > "import sys" to the run.py file.
-
-![import sys](images/import_sys.png)
-
-- When I initially deployed the game to Heroku, my game wouldn't run due to the following error message: 
-
-![Heroku error](images/deployment_error.png)
-
-- I fixed this by adding the external downloaded colorama package to the requirements.txt file.
-
-![requirements.txt](images/requirements_txt.png)
-
-- I had a few indentation errors in my code, I fixed this by passing my code on PEP8 Validation site, readjusted the alignment there, then copied and paste to code back to my run.py file.
 
 [Back to content list](<#contents>)
 
@@ -192,31 +169,23 @@ For desktop:
 
 ### Known bugs
 
-No known bugs detected
+- I have a known bug in my result display, in which the Wrong_guesses and Result are displayed weirdly due to length of random word.
+
+![result_display](images/bug_result_sheet.png)
+
+[Back to content list](<#contents>)
 
 ### Solved Bugs
 
-I came across a few issues and bugs while creating the script.js but I took the good advice my mentor gave me after the first project and made sure to have enough time to code and play around with this second project. By spending more time on googling and asking for guidance I successfully resolve those.
+- While testing the game I discovered I had no function to check if the whole word was guessed and if the one was correct or not, plus function to decrement the number of incorrect guesses. 
 
-Some of the bugs I came accross and fixed: 
+![decrementing_number_of_gusses](images/func_for_whole_word_check.png)
 
-+ Disabling the target buttons
-  + Description: Adding "disabled" attribute in html and corresponding code in js
-  + Expected behaviour: By selecting one target number others buttons should be disabled
-  + Actual behaviour: But adding the attribute in html all the buttons were disabled
-  + Fix: Skip adding attribute in html and achive that behavior from js
+- While testing the game in CI Python Linter I came accross a bug "Invalid escape sequence '\' (W605)" which required just adding a sigle letter r in front of quotation mark. I found a solution on:
 
-+ Dice images
-  + Description: Loaded page presenting two randomly picked dice images 
-  + Expected behaviour: Every time you hit the rollDice button two random images would be presented on the page
-  + Actual behaviour: Loaded page presenting dice images but once the rollDice button was hit the images would disappeare
-  + Fix: Declaring tow more variables and combining with the code I already had
+ * [Phabricator](https://phabricator.wikimedia.org/D1121?id=2925)
 
-+ Functions
-  + Description: Calling function 
-  + Expected behaviour: Function called on the right place would execute the expected code
-  + Actual behaviour: Function called on the wrong place does not execute the expected code or duplicates the expected result
-  + Fix: After some guidance and explanation I did connect the puzzle parts
+![Invalid_escape_sequence_W605](images/w605_invalid_escape_sequence_r.png)
 
 [Back to content list](<#contents>)
 
