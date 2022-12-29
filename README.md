@@ -34,17 +34,18 @@ With this project I want to deliver a fully interactive, user friendly fun comma
 # User Experience (UX)
 
 ### __User Stories__
+- The player wants to feel welcome to play.
 - The Player wants to be able to input their name and receive a feedback if the data is invalid.
 - The Player wants to know the number of attempts in total and attempts left.
-- The Player wants to know the already guessed letters and get notified if the letter has been already guessed.
-
-- As a user, I want to see if I've made the leaderboard after exiting the game after playing.
+- The Player wants to know the already guessed letters/words and get notified if the letter/word has been already guessed.
+- The player wants to have a clear message about the state on the end of the game.
+- The player wants to be able to choose if they wanna play further or quit.
 
 [Back to content list](<#contents>)
 
 # Hangman Flow Chart
 
-A flow-chart was used for mapping-out the necessary steps throughout  created with the main purpose to map the steps to follow throughout the implementation process of this game. I signed up for a free account with [Lucid Chart](https://www.lucidchart.com/pages/) to be able to produce the below chart.
+A flow-chart was used for mapping-out the necessary steps throughout the implementation process of this game. A free sign up with [Lucid Chart](https://www.lucidchart.com/pages/) helped in creation of this map.
 
 
 ![Hangman Flow Chart](images/pp3_flowchart.png)
@@ -55,7 +56,7 @@ A flow-chart was used for mapping-out the necessary steps throughout  created wi
 
 My game displays the following features:
 
-- Home Page
+- Home Page and the latest five results from the result sheet
 - Game Stages
 - Exit Game
 
@@ -63,8 +64,8 @@ My game displays the following features:
 
 ![Hangman Home Page](images/home_page.png)
 
-- The home page displays the name of game, welcomes the user and briefly explains how to play the game.
-- Here the user will input his/her name to continue, once done the system will greet the player stating his/her name.
+- The home page displays the latest five results from the hangman_game sheet, the name and ASCII art of the game and welcomes the user.
+- User will be asked to input their username to continue and once they hit the ENTER, the player will be greeted bu seeing their name being displayed.
 
 ## Game Stages
 
@@ -92,7 +93,7 @@ My game displays the following features:
 
 ## Stopwatch or Timer
 
-- This feature will definitely add a level of difficulty when the game is played.
+- This feature would improve the game and add a level of difficulty to it.
 
 [Back to content list](<#contents>)
 
@@ -104,15 +105,15 @@ My game displays the following features:
 
 ## Programs Used
 
-- [Git](https://git-scm.com/) was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub and Heroku.
+- [Git](https://git-scm.com/) by utilizing the Gitpod terminal for version control.
 
-- [GitHub](https://github.com/) was used to store the projects code after being pushed from Git.
+- [GitHub](https://github.com/) used to store the project once pushed from Git.
 
-- [Heroku](https://heroku.com/) was used for the deployed application.
+- [Heroku](https://heroku.com/) used for deploying the application.
 
-- [Lucid Chart](https://www.lucidchart.com/) to map the flowchart for the game.
+- [Lucid Chart](https://www.lucidchart.com/) to map the game's flowchart.
 
-- [PEP8 online](http://pep8online.com/checkresult) to find indentation errors in Python.
+- [CI Python Linter](https://pep8ci.herokuapp.com/) to find indentation errors in Python.
 
 [Back to content list](<#contents>)
 
@@ -120,7 +121,7 @@ My game displays the following features:
 
 ## PEP8 Validation
 
-[PEP8](http://pep8online.com/) online validation was used to check that the code is up to standard. All pages cleared the PEP8 validation with no errors.
+[CI Python Linter](https://pep8ci.herokuapp.com/) online validation was used to check that the code is up to standard. All pages cleared the PEP8 validation with no errors.
 
 ## run.py
 
@@ -200,42 +201,5 @@ My game displays the following features:
 
 [Back to content list](<#contents>)
 
-
-
-
-
-
-
-
-
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome Antonio-Claudio Andelic,
-
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
-
-## Reminders
-
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
 -----
-Happy coding!
+Happy coder :)

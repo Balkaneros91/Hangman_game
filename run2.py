@@ -123,7 +123,7 @@ class Hangman:
                 if self.wrong_guesses >= self.max_wrong_guesses:
                     self.display_game_state()
                     print("You lost :( The word was:", self.word)
-                    time.sleep(2)
+                    time.sleep(1)
                     break
         if game.wrong_guesses >= game.max_wrong_guesses:
             final_state = "lost"
@@ -271,7 +271,7 @@ if __name__ == "__main__":
     print("========================")
     time.sleep(1)
     print(
-        """
+        r"""
           +----+
           |   \|
           Ö    |
