@@ -19,9 +19,12 @@ You can view the live deployed game here: [Hangman_Game](https://hangman-saveman
 * [Future Features](<#future-features>)
 * [Technologies Used](#technologies-used)
 * [Testing](<#testing>)
-  * [PEP8 Valdation](<#pep8-validation>)
-  * [Bugs Fixed](#bugs-fixed)
+  * [CI Python Linter Valdation](<#ci-python-linter-validation>)
 * [Deployment](#deployment)
+* [Lighthouse](#lighthouse)
+* [Bugs](#bugs)
+  * [Known Bugs](#known-bugs)
+  * [Solved Bugs](#solved-bugs)
 * [Credits](<#credits>)
 * [Acknowledgements](<#acknowledgements>)
 
@@ -62,26 +65,29 @@ My game displays the following features:
 
 ## Home Page
 
-![Hangman Home Page](images/home_page.png)
+![Hangman Home Page](images/home_page_mock_terminal.png)
+![Home page- name validation](images/name_validation.png)
 
 - The home page displays the latest five results from the hangman_game sheet, the name and ASCII art of the game and welcomes the user.
 - User will be asked to input their username to continue and once they hit the ENTER, the player will be greeted bu seeing their name being displayed.
 
 ## Game Stages
 
-![Game Stages](images/game_stages.png)
+![Game Stages](images/game_start_look.png)
+![Game Stages](images/incorr_letter_or_word.png)
+![Game Stages](images/state_and_exit_validation.png)
 
  - Once the game begins, the user will be able to see all the stages of the game after each attempt, these are:
-   * The selected letters
-   * The remaining attemps
-   * The letters that have been already used
+   * Random word displayed with underscores
+   * List of incorrectly guesses letter(s) or word(s)
+   * The number of incorrect attemps
    * Error messages if the player makes the wrong selection
-   * The six stages of the hangman
-   * The option to play again or be redirected to the main menu
+   * The option to play again
 
 ## Exit Game
 
-![Exit Game](images/exit_game.png)
+![Exit Game](images/game_exit.png)
+![Exit Game](images/exit_state.png)
 
 [Back to content list](<#contents>)
 
@@ -119,17 +125,13 @@ My game displays the following features:
 
 # Testing
 
-## PEP8 Validation
+## CI Python Linter Validation
 
 [CI Python Linter](https://pep8ci.herokuapp.com/) online validation was used to check that the code is up to standard. All pages cleared the PEP8 validation with no errors.
 
 ## run.py
 
-![run.py PEP8 test result](images/run_py.png)
-
-## words.py
-
-![words.py PEP8 test result](images/words_py.png)
+![run.py Linter test result](images/ci_python_linter.png)
 
 [Back to content list](<#contents>)
 
@@ -176,6 +178,45 @@ My game displays the following features:
 - Select Github deployment method.
 - Search for your repository name and click the "Connect" button to link your chosen repository
 - At the bottom of that page, select your preferred deplyment type; Automatic Deployment or Manual Deployment and wait a few minutes for your project to be deployed.
+
+[Back to content list](<#contents>)
+
+# Lighthouse
+
+For desktop: 
+![Lighthouse](images/lighthouse_desktop.png)
+
+[Back to content list](<#contents>)
+
+# Bugs
+
+### Known bugs
+
+No known bugs detected
+
+### Solved Bugs
+
+I came across a few issues and bugs while creating the script.js but I took the good advice my mentor gave me after the first project and made sure to have enough time to code and play around with this second project. By spending more time on googling and asking for guidance I successfully resolve those.
+
+Some of the bugs I came accross and fixed: 
+
++ Disabling the target buttons
+  + Description: Adding "disabled" attribute in html and corresponding code in js
+  + Expected behaviour: By selecting one target number others buttons should be disabled
+  + Actual behaviour: But adding the attribute in html all the buttons were disabled
+  + Fix: Skip adding attribute in html and achive that behavior from js
+
++ Dice images
+  + Description: Loaded page presenting two randomly picked dice images 
+  + Expected behaviour: Every time you hit the rollDice button two random images would be presented on the page
+  + Actual behaviour: Loaded page presenting dice images but once the rollDice button was hit the images would disappeare
+  + Fix: Declaring tow more variables and combining with the code I already had
+
++ Functions
+  + Description: Calling function 
+  + Expected behaviour: Function called on the right place would execute the expected code
+  + Actual behaviour: Function called on the wrong place does not execute the expected code or duplicates the expected result
+  + Fix: After some guidance and explanation I did connect the puzzle parts
 
 [Back to content list](<#contents>)
 
