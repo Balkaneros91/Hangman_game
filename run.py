@@ -96,6 +96,24 @@ class Hangman:
                     self.word,
                 )
                 break
+            if len(letter_or_word) > 1:
+                if letter_or_word == self.word:
+                    self.correct_letters = list(self.word)
+                    self.display_game_state()
+                    print(
+                        "You won in",
+                        self.wrong_guesses,
+                        "guesses! The word was:",
+                        self.word,
+                    )
+                    break
+                else:
+                    if letter_or_word not in self.incorrect_letters:
+                        self.incorrect_letters.append(letter_or_word)
+                        self.wrong_guesses += 1
+                    print("Incorrect guess! Please try again.")
+                    time.sleep(2)
+                    continue
             if not letter_or_word.isalpha() or len(letter_or_word) != 1:
                 print("Error: Please enter a single letter.")
                 time.sleep(2)
